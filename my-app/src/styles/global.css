@@ -1,0 +1,79 @@
+@import "./variables.css";
+@import "./animations.css";
+
+/* ---------- HERO SECTION ---------- */
+
+.hero-section {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .hero-background {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.55);
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--champagne);
+  }
+  
+  .hero-title {
+    font-family: "PlayfairDisplay", serif;
+    font-size: clamp(48px, 7vw, 96px);
+    letter-spacing: 0.06em;
+    margin-bottom: 12px;
+    color: var(--champagne);
+  }
+
+  .hero-title h1 {
+    color: var(--champagne);
+  }
+  
+  .hero-tagline {
+    font-family: "EditorialScript";
+    font-size: 20px;
+    opacity: 0.9;
+    margin-bottom: 36px;
+  }
+  
+  .hero-cta {
+    background-color: var(--oxblood);
+    color: var(--champagne);
+    border: none;
+    padding: 14px 36px;
+    border-radius: 999px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .hero-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  }
+  
+  .scroll-indicator {
+    position: absolute;
+    bottom: 32px;
+    opacity: 0.7;
+    animation: floatDown 2.2s infinite ease-in-out;
+  }
+  
+  .scroll-indicator img {
+    width: 22px;
+  }
+  
