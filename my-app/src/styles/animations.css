@@ -13,3 +13,30 @@
     }
   }
   
+
+@keyframes scrollPulse {
+  0% { opacity: 0; transform: translateY(0); }
+  50% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(12px); }
+}
+
+ /* Mobile */
+  
+ @media (max-width: 768px) {
+  .menu-hero h2 {
+    font-size: 42px;
+  }
+
+  .cocktail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@keyframes pageFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
