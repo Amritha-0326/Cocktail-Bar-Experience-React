@@ -1,6 +1,10 @@
 import { useSearchParams } from "react-router-dom";
-import martiniIcon from "../assets/icons/martini-icon.svg";
-import MenuBanner from "../assets/images/MenuBanner.jpg";
+import MenuBanner from "../assets/images/MenuBanner.png";
+import stampBold from "../assets/icons/stamp-bold.svg";
+import stampSeductive from "../assets/icons/stamp-seductive.svg";
+import stampClassic from "../assets/icons/stamp-classic.svg";
+import stampPlayful from "../assets/icons/stamp-playful.svg";
+
 
 const cocktails = [
   {
@@ -31,15 +35,55 @@ const cocktails = [
     price: "€17",
     mood: "Playful",
   },
+  {
+    id: 5,
+    name: "Margarita",
+    description: "Tequila, triple sec, fresh lime juice, salt",
+    price: "€16",
+    mood: "Classic",
+  },
+  {
+    id: 6,
+    name: "Pink Margarita",
+    description: "Vodka, dry vermouth, grenadine, lemon juice",
+    price: "€19",
+    mood: "Playful",
+  },
+  {
+    id: 7,
+    name: "Sidecar",
+    description: "Cognac or Brandy, triplr sec, lemon juice",
+    price: "€20",
+    mood: "Classic",
+  },
+  {
+    id: 8,
+    name: "Highballs",
+    description: "Toki & Tonic, melon Crush, strawberry lemonade",
+    price: "€18",
+    mood: "Seductive",
+  }
 ];
+const moodStampMap = {
+  Bold: stampBold,
+  Seductive: stampSeductive,
+  Classic: stampClassic,
+  Playful: stampPlayful,
+};
+
 
 export default function Menu() {
   const [searchParams, setSearchParams] = useSearchParams();
   const urlMood = searchParams.get("mood");
+  
+
 
   const activeMood = urlMood
     ? urlMood.charAt(0).toUpperCase() + urlMood.slice(1)
     : "All Cocktails";
+
+  const isMoodFiltered = activeMood !== "All Cocktails";
+  const activeStamp = moodStampMap[activeMood];
 
   const filteredCocktails =
     activeMood === "All Cocktails"
@@ -60,12 +104,7 @@ export default function Menu() {
           <p className="menu-subtitle">
             Crafted with passion, served with elegance
           </p>
-        </div>
-      </section>
-
-      {/* Menu Content */}
-      <section className="menu-section">
-        <div className="menu-moods">
+          <div className="menu-moods">
           {["All Cocktails", "Bold", "Seductive", "Classic", "Playful"].map((mood) => (
             <button
               key={mood}
@@ -82,10 +121,20 @@ export default function Menu() {
             </button>
           ))}
         </div>
+        </div>
+      </section>
 
+      {/* Menu Content */}
+      <section className="menu-section">
         <div className="cocktail-grid">
           {filteredCocktails.map((cocktail) => (
-            <div className="cocktail-card fade-in" key={cocktail.id}>
+            <div className="cocktail-card fade-in" 
+              key={cocktail.id}>
+              {isMoodFiltered && activeStamp && (
+              <span className="cocktail-stamp" key={activeMood}>
+                <img src={activeStamp} alt="" aria-hidden="true" />
+              </span>
+              )}
               <h3>{cocktail.name}</h3>
               <p>{cocktail.description}</p>
               <span className="price">{cocktail.price}</span>

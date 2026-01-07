@@ -193,7 +193,6 @@
   background-position: center;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
-  /* ✅ ADD THESE */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -262,22 +261,17 @@
 }
 
 .menu-section {
-  background: radial-gradient(
-    circle at top,
-    rgba(255, 255, 255, 0.04),
-    #000
-  );
-  color: #f5f1e8;
-  padding: 120px 24px;
+  background:#0e0e0e;
+  padding: 36px 24px;
   min-height: 100vh;
 }
 .menu-hero {
   position: relative;
-  min-height: 70vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: hidden
 }
 
 .menu-hero-bg {
@@ -304,13 +298,15 @@
   z-index: 2;
   text-align: center;
   color: var(--champagne);
+  text-align: center;
+  color: var(--champagne);
+  padding: 0 24px;
 }
 
 .menu-title {
   font-family: "PlayfairDisplay", serif;
   font-size: clamp(48px, 6vw, 88px);
   letter-spacing: 0.04em;
-  margin-bottom: 12px;
 }
 
 .menu-subtitle {
@@ -332,14 +328,14 @@
   opacity: 0.8;
 }
 
-
 /* Mood selector */
 
 .menu-moods {
   display: flex;
   justify-content: center;
   gap: 14px;
-  margin-bottom: 64px;
+  margin-top: 50%;
+  margin-bottom: -88px;
   flex-wrap: wrap;
 }
 
@@ -356,11 +352,20 @@
 }
 
 .mood-pill:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: linear-gradient(
+    135deg,
+    rgba(139, 30, 63, 0.35),
+    rgba(139, 30, 63, 0.15)
+  );
 }
 
 .mood-pill.active {
-  background: #8b1e3f;
+  /* background: #8b1e3f; */
+  background: linear-gradient(
+    to bottom,
+    #8b1e3f,
+    #2b0813
+  );
   border-color: #8b1e3f;
 }
   
@@ -375,30 +380,53 @@
   }
   
   .cocktail-card {
-    background: rgba(255, 255, 255, 0.04);
-    border-radius: 16px;
+    position: relative;
+    background: rgba(207, 202, 202, 0.119);
+    border-radius: 22px 18px 26px 20px;
+    border: 1px solid transparent;
+    margin-top: 10%;
     padding: 28px;
     backdrop-filter: blur(8px);
     transition: transform 0.3s ease;
+    color: var(--champagne);
+  }
+
+  .cocktail-card h3 {
+    position: relative;
+    display: inline-block; /* important for underline width */
+    transition: color 0.3s ease;
+  }
+
+  .cocktail-card:hover {
+    border-color:var(--oxblood);
+  }
+  .cocktail-card:hover h3 {
+    color: var(--oxblood);
+    transition: color 0.3s ease-out;
   }
   
-  .cocktail-card:hover {
-    transform: translateY(-4px);
+  .cocktail-card h3::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 1px;
+    background: var(--champagne);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: width 0.35s ease;
   }
+  .cocktail-card:hover h3::after {
+    width: 100%;
+    transform: scaleX(1);
+  }    
 
   .fade-in {
     opacity: 0;
     transform: translateY(16px);
     animation: fadeUp 0.6s ease-out forwards;
   }
-  
-  @keyframes fadeUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
   
   .cocktail-header {
     display: flex;
@@ -412,13 +440,9 @@
     font-size: 22px;
   }
   
-  .cocktail-header span {
-    color: #c37052;
-    font-weight: 600;
-  }
   
   .cocktail-desc {
-    font-family: "Jost", sans-serif;
+    font-family: "Playfair Display", sans-serif;
     font-size: 15px;
     line-height: 1.6;
     opacity: 0.85;
@@ -490,20 +514,68 @@
   }
 
   .footer {
-    margin-top: auto;  /*pushes to bottom */
-    width: 100%;
-    text-align: center;
-    padding: 1.5rem 0;
     font-family: "Playfair Display", serif;
-    background: var(--black);
-    z-index: 100;
+    background: var(--black); 
+    color: var(--champagne);
+    padding: 40px 20px;
+    width: 100%;
   }
   
-  .footer p {
-    color: var(--champagne);
-    margin: 0;
+  .footer-grid {
+    display: flex;
+    justify-content: space-between; 
+    flex-wrap: wrap; 
+    max-width: 1100px;
+    margin: 0 auto 20px; 
+    gap: 20px; 
   }
-
+  
+  .footer-column {
+    flex: 1; 
+    min-width: 180px; 
+    text-align: center; 
+  }
+  
+  .footer-column p {
+    margin: 4px 0;
+    font-size: 0.9rem;
+  }
+  
+  .footer-column strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: larger;
+  }
+  
+  .footer-copyright {
+    text-align: center;
+    font-size: 0.8rem;
+    margin-top: 20px;
+    opacity: 0.8;
+  }
+  
 body.fade-out {
   animation: pageFadeOut 0.3s ease forwards;
+}
+
+.cocktail-stamp {
+  position: absolute;
+  top: 24px;
+  right: 44px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: transparent; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  opacity: 0.9;
+}
+
+.cocktail-stamp img {
+  width: 140px;
+  height: auto;
+  opacity: 0.9;
+  rotate: -24deg;
 }
