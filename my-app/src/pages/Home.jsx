@@ -36,7 +36,7 @@ export default function Home() {
             Discover Our Menu
           </button>
 
-          <Button>Reserve a Table</Button>
+          <Button onClick={() => navigate("/reservations")}>Reserve a Table</Button>
 
           <ScrollIndicator />
 

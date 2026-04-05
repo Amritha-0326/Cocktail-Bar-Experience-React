@@ -1,4 +1,3 @@
-// src/components/layout/Navbar.jsx
 import { Link } from "react-router-dom";
 import "../../styles/global.css";
 

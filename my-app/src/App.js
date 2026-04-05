@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Home from "./pages/Home";
 import Menu from "./pages/Menu";
+import Reservations from "./pages/Reservaions"
 import './App.css'
 import "./styles/global.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -19,6 +20,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/menu" element={<Menu />} />
+      <Route path="/reservations" element={<Reservations />} />
     </Routes>
     </>
   )

@@ -4,6 +4,7 @@ import stampBold from "../assets/icons/stamp-bold.svg";
 import stampSeductive from "../assets/icons/stamp-seductive.svg";
 import stampClassic from "../assets/icons/stamp-classic.svg";
 import stampPlayful from "../assets/icons/stamp-playful.svg";
+import PageWrapper from "../components/layout/PageWrapper";
 
 
 const cocktails = [
@@ -92,56 +93,58 @@ export default function Menu() {
 
   return (
     <>
+      <PageWrapper fullBleed>
       {/* Menu Banner */}
-      <section className="menu-hero">
-        <div
-          className="menu-hero-bg"
-          style={{ backgroundImage: `url(${MenuBanner})` }}
-        />
+        <section className="menu-hero">
+          <div
+            className="menu-hero-bg"
+            style={{ backgroundImage: `url(${MenuBanner})` }}
+          />
 
-        <div className="menu-hero-content">
-          <h1 className="menu-title">The Menu</h1>
-          <p className="menu-subtitle">
-            Crafted with passion, served with elegance
-          </p>
-          <div className="menu-moods">
-          {["All Cocktails", "Bold", "Seductive", "Classic", "Playful"].map((mood) => (
-            <button
-              key={mood}
-              className={`mood-pill ${activeMood === mood ? "active" : ""}`}
-              onClick={() => {
-                if (mood === "All Cocktails") {
-                  setSearchParams({});
-                } else {
-                  setSearchParams({ mood: mood.toLowerCase() });
-                }
-              }}
-            >
-              {mood}
-            </button>
-          ))}
-        </div>
-        </div>
-      </section>
+          <div className="menu-hero-content">
+            <h1 className="menu-title">The Menu</h1>
+            <p className="menu-subtitle">
+              Crafted with passion, served with elegance
+            </p>
+            <div className="menu-moods">
+            {["All Cocktails", "Bold", "Seductive", "Classic", "Playful"].map((mood) => (
+              <button
+                key={mood}
+                className={`mood-pill ${activeMood === mood ? "active" : ""}`}
+                onClick={() => {
+                  if (mood === "All Cocktails") {
+                    setSearchParams({});
+                  } else {
+                    setSearchParams({ mood: mood.toLowerCase() });
+                  }
+                }}
+              >
+                {mood}
+              </button>
+            ))}
+          </div>
+          </div>
+        </section>
 
-      {/* Menu Content */}
-      <section className="menu-section">
-        <div className="cocktail-grid">
-          {filteredCocktails.map((cocktail) => (
-            <div className="cocktail-card fade-in" 
-              key={cocktail.id}>
-              {isMoodFiltered && activeStamp && (
-              <span className="cocktail-stamp" key={activeMood}>
-                <img src={activeStamp} alt="" aria-hidden="true" />
-              </span>
-              )}
-              <h3>{cocktail.name}</h3>
-              <p>{cocktail.description}</p>
-              <span className="price">{cocktail.price}</span>
-            </div>
-          ))}
-        </div>
-      </section>
+        {/* Menu Content */}
+        <section className="menu-section">
+          <div className="cocktail-grid">
+            {filteredCocktails.map((cocktail) => (
+              <div className="cocktail-card fade-in" 
+                key={cocktail.id}>
+                {isMoodFiltered && activeStamp && (
+                <span className="cocktail-stamp" key={activeMood}>
+                  <img src={activeStamp} alt="" aria-hidden="true" />
+                </span>
+                )}
+                <h3>{cocktail.name}</h3>
+                <p>{cocktail.description}</p>
+                <span className="price">{cocktail.price}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+      </PageWrapper>
     </>
   );
 }
