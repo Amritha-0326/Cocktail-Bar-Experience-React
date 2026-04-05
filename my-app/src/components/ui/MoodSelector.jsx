@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+
 
 import boldImg from "../../assets/images/moods/bold.png";
 import seductiveImg from "../../assets/images/moods/seductive.png";
