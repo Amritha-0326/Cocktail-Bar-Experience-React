@@ -1,4 +1,5 @@
 import banner from "../assets/images/ReservationsBanner.jpg";
+import { useNavigate } from "react-router-dom";
 import PageWrapper from "../components/layout/PageWrapper";
 import { useState, useEffect } from "react";
 import Modal from "../components/ui/Modal";
@@ -53,6 +54,7 @@ export default function Reservations() {
   const [selectedTime, setSelectedTime] = useState("");
   const [isClosed, setIsClosed] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const navigate = useNavigate();
   
   useEffect(() => {
     if (!selectedDate) return;
@@ -214,7 +216,7 @@ export default function Reservations() {
               <div>Dedicated Service</div>
             </div>
 
-            <button className="vip-btn">Join VIP Membership</button>
+            <button onClick={() => navigate("/vip")} className="vip-btn">Join VIP Membership</button>
           </div>
         </section>
 

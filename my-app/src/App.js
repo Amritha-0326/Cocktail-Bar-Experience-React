@@ -2,6 +2,7 @@
 import Home from "./pages/Home";
 import Menu from "./pages/Menu";
 import Reservations from "./pages/Reservations"
+import VIPMembership from "./pages/VIPMembership";
 import './App.css'
 import "./styles/global.css";
 import {useLocation, Routes, Route } from "react-router-dom";
@@ -20,6 +21,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/menu" element={<Menu />} />
       <Route path="/reservations" element={<Reservations />} />
+      <Route path="/vip" element={<VIPMembership />} />
     </Routes>
     </>
   )
