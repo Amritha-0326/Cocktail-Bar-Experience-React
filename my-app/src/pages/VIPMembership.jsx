@@ -1,10 +1,10 @@
-import { useNavigate } from "react-router-dom";
+
 import PageWrapper from "../components/layout/PageWrapper";
 import banner from "../assets/images/VIPBanner.png";
 import { useState } from "react";
 
 export default function VIPMembership() {
-  const navigate = useNavigate();
+
   const [selectedPlan, setSelectedPlan] = useState("Platinum");
 
   return (
@@ -40,7 +40,7 @@ export default function VIPMembership() {
               <h3>{tier.name}</h3>
               <h2>{tier.price}</h2>
               <span>per month</span>
-              <button className="vip-submit full">Select Plan</button>
+              <button>Select Plan</button>
             </div>
           ))}
         </section>
